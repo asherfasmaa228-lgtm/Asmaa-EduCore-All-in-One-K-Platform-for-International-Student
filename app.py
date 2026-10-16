@@ -1,3 +1,4 @@
+
 import streamlit as st
 import datetime
 import random
@@ -100,7 +101,7 @@ KPOP_DATABASE = {
     "DDU-DU DDU-DU (BLACKPINK)": [
         "착한 얼굴에 그렇지 못한 태도 (A kind face with an unkind attitude / وجه طيب ولكن بأسلوب جريء)", 
         "가녀린 몸매 속 가려진 Volume은 두배로 (Twice the volume hidden in a slender body)", 
-        "거침없이 직진 굳ي 보진 않지 눈치 (Straight forward without hesitation)"
+        "거침없이 직진 굳지 보진 않지 눈치 (Straight forward without hesitation)"
     ]
 }
 
@@ -111,7 +112,7 @@ KOREAN_VOCABULARY = [
     {"kor": "사랑해요", "pron": "Saranghaeyo", "ar": "أحبك", "cat": "👋 التحيات والترحيب"},
     {"kor": "죄송합니다", "pron": "Joesonghabnida", "ar": "أنا آسف", "cat": "👋 التحيات والترحيب"},
     {"kor": "밥", "pron": "Bap", "ar": "طعام / أرز مطبوخ", "cat": "🍎 الأطعمة والمشروبات"},
-    {"kor": "물", "pron": "Mul", "ar": "ماء", "type": "🍎 الأطعمة والمشروبات", "cat": "🍎 الأطعمة والمشروبات"},
+    {"kor": "물", "pron": "Mul", "ar": "ماء", "cat": "🍎 الأطعمة والمشروبات"},
     {"kor": "고기", "pron": "Gogi", "ar": "لحم", "cat": "🍎 الأطعمة والمشروبات"},
     {"kor": "술", "pron": "Sul", "ar": "مشروب كحولي", "cat": "🍎 الأطعمة والمشروبات"},
     {"kor": "학교", "pron": "Hakgyo", "ar": "مدرسة / جامعة", "cat": "🏫 الحياة الأكاديمية واليومية"},
@@ -148,7 +149,7 @@ if selected_app == "💡 أكاديمية اللغة الكورية":
     
     edu_tabs = st.tabs(["🔤 قاموس الكلمات الذكي", "🎵 ركن الفن والـ K-Pop"])
     
-    with edu_tabs[0]:
+    with edu_tabs:
         st.subheader("📑 تصفح الكلمات حسب الفئة")
         vocab_filter = st.selectbox("اختر فئة الكلمات لعرضها:", ["عرض جميع الكلمات", "👋 التحيات والترحيب", "🍎 الأطعمة والمشروبات", "🏫 الحياة الأكاديمية واليومية"])
         
@@ -166,7 +167,7 @@ if selected_app == "💡 أكاديمية اللغة الكورية":
                 </div>
                 """, unsafe_allow_html=True)
                 
-    with edu_tabs[1]:
+    with edu_tabs:
         st.subheader("🎵 تحليل نصوص الأغاني الكورية")
         st.write("اختر أغنيتك المفضلة لاستعراض الكلمات وفهم طريقة تركيب الجمل النطقية:")
         
@@ -186,9 +187,10 @@ elif selected_app == "🍳 فاحص الأطعمة الحلال الحركي":
     
     food_tabs = st.tabs(["📋 فحص منتج من قاعدة البيانات", "📸 محاكاة الفحص الضوئي وصور الملصقات"])
     
-    with food_tabs[0]:
+    with food_tabs:
         st.subheader("⚙️ فحص عبر الاختيار المباشر")
         selected_food_key = st.selectbox("اختر اسم الأكلة أو المنتج الكوري المشهور:", list(FOOD_DATABASE.keys()), format_func=lambda x: FOOD_DATABASE[x]["name"])
         
         target_food = FOOD_DATABASE[selected_food_key]
         if target_food["halal"]:
+            st.markdown(f"""
